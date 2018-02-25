@@ -1,0 +1,7 @@
+- add runner script to install to stage and prod
+
+- git setup
+	- add key to DO node on create or add manually
+	- git clone repo
+	- set git config username and email
+	- run script
