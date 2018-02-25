@@ -26,9 +26,13 @@ fi
 
 printf "loading data in to container...\n"
 docker cp initdata.sql root_mariadb_1:/
+docker cp url_rewrite.sql docker_mariadb_1:/
 
 printf "importing into database...\n"
 docker exec root_mariadb_1 /bin/sh -c 'mysql -u root -proot demo_db </initdata.sql'
+
+printf "rewriting urls....\n"
+docker exec docker_mariadb_1 /bin/sh -c 'mysql -u root -proot demo_db </url_rewrite.sql'
 
 timeout=$((SECONDS+30))
 check_http() {
