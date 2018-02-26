@@ -1,6 +1,6 @@
 #!/bin/bash
 docker-compose down
-docker image rm -f mbruts/500rockets-main-site 
+docker image rm -f $BUILD_IMAGE_NAME
 docker volume rm -f demodb
 docker volume rm -f demo_site
 docker image prune -f

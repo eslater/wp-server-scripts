@@ -2,11 +2,9 @@ version: '3.1'
 
 services:
   wp-site:
-    image: mbruts/500rockets-main-site:latest 
+    image: "${BUILD_IMAGE_NAME}:${BUILD_IMAGE_NUM}"
     ports:
-      - '80:80' # expose 80 on host and sent to 80 in container
-    #  - '443:443' 
-    
+      - '80:80'
     depends_on:
       - mariadb
     environment:
@@ -21,14 +19,8 @@ services:
       - mariadb:wp-site
     volumes:
       - demo_site:/var/www/html
-    #deploy:
-      #restart_policy:
-        #condition: any
-        #delay: 5s
-        #max_attempts: 300
-        #window: 120s  
   mariadb:
-    image: mariadb  # this will use mariadb:latest
+    image: mariadb
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=demo_db
