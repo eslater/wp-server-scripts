@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   wp-site:
-    image: "${BUILD_IMAGE_NAME}:${BUILD_IMAGE_NUM}"
+    image: "${BUILD_IMAGE_NAME}:${BUILD_IMAGE_NUMBER}"
     ports:
       - '80:80'
     depends_on:
